@@ -32,6 +32,9 @@ jobs:
     - name: Wait for MongoDB to start
       run: until mongo --eval "print('waited for connection')" ; do sleep 2; done
 
+    - name: Start server
+      run: npm run start:test
+
     - name: Run Lint
       run: npm lint
 
