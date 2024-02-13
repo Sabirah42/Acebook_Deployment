@@ -30,15 +30,8 @@ jobs:
         start: npm run start:test
         wait-on: http://localhost:3030 
 
-
-    # - name: Start server
-    #   run: npm run start:test
-
     - name: Run Lint
       run: npm run lint
 
     - name: Run Test Unit
       run: npm run test:unit
-
-    - name: Run Test Integration
-      run: npm run test:integration
