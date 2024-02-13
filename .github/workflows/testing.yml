@@ -8,13 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mongodb:
-        image: mongo:latest
-        ports:
-          - 27017:27017
-        options: --health-cmd "mongo --eval 'db.runCommand({ping:1})'" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
     - uses: actions/checkout@v2
 
@@ -23,14 +16,13 @@ jobs:
       with:
         node-version: '21' 
 
-    - name: Install MongoDB client tools
-      run: sudo apt-get install -y mongodb-clients
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.10.0
+      with:
+        mongodb-version: '5.0'
 
     - name: Install Dependencies
       run: npm install
-
-    - name: Wait for MongoDB to start
-      run: until mongo --eval "print('waited for connection')" ; do sleep 2; done
 
     - name: Start server
       run: npm run start:test
