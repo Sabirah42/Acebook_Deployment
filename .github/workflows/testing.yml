@@ -1,0 +1,39 @@
+name: Node.js and MongoDB testing Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+        options: --health-cmd "mongo --eval 'db.runCommand({ping: 1})'" --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '21' # Specify the Node.js version you want to use
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Wait for MongoDB to start
+      run: until mongo --eval "print('waited for connection')" ; do sleep 2; done
+
+    - name: Run Lint
+      run: npm lint
+
+    - name: Run Test Unit
+      run: npm test:unit
+
+    - name: Run Test Integration
+      run: npm test:integration
