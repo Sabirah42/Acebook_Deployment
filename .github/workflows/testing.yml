@@ -35,10 +35,10 @@ jobs:
     #   run: npm run start:test
 
     - name: Run Lint
-      run: npm lint
+      run: npm run lint
 
     - name: Run Test Unit
-      run: npm test:unit
+      run: npm run test:unit
 
     - name: Run Test Integration
-      run: npm test:integration
+      run: npm run test:integration
