@@ -21,7 +21,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '14' # Specify the Node.js version you want to use
+        node-version: '21' 
 
     - name: Install MongoDB client tools
       run: sudo apt-get install -y mongodb-clients
