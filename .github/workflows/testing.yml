@@ -24,7 +24,7 @@ jobs:
         node-version: '21' 
 
     - name: Install MongoDB client tools
-      run: yum install -y mongodb-clients
+      run: sudo apt-get install -y mongodb-clients
 
     - name: Install Dependencies
       run: npm install
