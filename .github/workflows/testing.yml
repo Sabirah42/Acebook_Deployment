@@ -42,4 +42,6 @@ jobs:
         aws-access-key-id: ${{ secrets.MYAWSACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.MYAWSSECRET_KEY }}
         aws-region: eu-west-2 
-  
+
+    - name: Upload to S3 
+      run: aws s3 sync . s3://yusabs-moli
