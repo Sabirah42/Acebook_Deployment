@@ -46,9 +46,7 @@ jobs:
     
 
     - name: Zip build directory
-      run: | 
-        cd $GITHUB_WORKSPACE
-        zip -r app.zip .
+      run: zip -r app.zip .
 
     - name: Upload to S3 
-      run: aws s3 sync app.zip s3://yusabs-moli
+      run: aws s3 cp app.zip s3://yusabs-moli
