@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /app.zip # The source path relative to the root of your application archive
+  - source: / # The source path relative to the root of your application archive
     destination: /var/www/html/yusabmoli-ec2 # The destination path on the target instance
 hooks:
   # BeforeInstall:
