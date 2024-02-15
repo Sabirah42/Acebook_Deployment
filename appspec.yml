@@ -4,23 +4,23 @@ files:
   - source: /app.zip # The source path relative to the root of your application archive
     destination: /var/www/html/yusabmoli-ec2 # The destination path on the target instance
 hooks:
-  BeforeInstall:
-    - location: scripts/before_install.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 300
-      runas: root
+  # BeforeInstall:
+  #   - location: scripts/before_install.sh
+  #     timeout: 300
+  #     runas: root
+  # AfterInstall:
+  #   - location: scripts/after_install.sh
+  #     timeout: 300
+  #     runas: root
   ApplicationStart:
     - location: scripts/start_application.sh
       timeout: 300
       runas: root
-  ApplicationStop:
-    - location: scripts/stop_application.sh
-      timeout: 300
-      runas: root
-  ValidateService:
-    - location: scripts/validate_service.sh
-      timeout: 300
-      runas: root
+  # ApplicationStop:
+  #   - location: scripts/stop_application.sh
+  #     timeout: 300
+  #     runas: root
+  # ValidateService:
+  #   - location: scripts/validate_service.sh
+  #     timeout: 300
+  #     runas: root
