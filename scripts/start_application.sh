@@ -1,2 +1,2 @@
-cd /var/www/myapp
-npm run myscript
+cd /var/www/app
+npm start
