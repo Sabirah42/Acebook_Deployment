@@ -52,9 +52,9 @@ jobs:
     - name: Create CodeDeploy Application Revision
       run: |
           aws deploy create-deployment \
-          --application-name ${{ env.yusabmoli-acebook }} \
-          --s3-location bucket=${{ env.yusabs-moli }},bundleType=zip,key=${{ env.app.zip }} \
-          --deployment-group-name ${{ env.ysml-production }} \
+          --application-name yusabmoli-acebook \
+          --s3-location bucket=yusabs-moli,bundleType=zip,key=app.zip \
+          --deployment-group-name ysml-production \
           --description "CommitSHA-${{ github.sha }}"
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.MYAWSACCESS_KEY }}
