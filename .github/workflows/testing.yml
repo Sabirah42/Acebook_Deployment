@@ -43,10 +43,21 @@ jobs:
         aws-secret-access-key: ${{ secrets.MYAWSSECRET_KEY }}
         aws-region: eu-west-2 
 
-    
-
     - name: Zip build directory
       run: zip -r app.zip .
 
     - name: Upload to S3 
       run: aws s3 cp app.zip s3://yusabs-moli
+
+    - name: Create CodeDeploy Application Revision
+      run: |
+          aws deploy create-deployment \
+          --application-name ${{ env.yusabmoli-acebook }} \
+          --s3-location bucket=${{ env.yusabs-moli }},bundleType=zip,key=${{ env.app.zip }} \
+          --deployment-group-name ${{ env.ysml-production }} \
+          --description "CommitSHA-${{ github.sha }}"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.MYAWSACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.MYAWSSECRET_KEY }}
+        AWS_REGION: eu-west-2
+      
