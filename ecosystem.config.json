@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+        "name": "yusabmoli-acebook",
+        "script": "node",
+        "args": "./bin/www"
+        }
+    ]
+}
