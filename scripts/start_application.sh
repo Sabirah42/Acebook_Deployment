@@ -5,8 +5,3 @@ nvm install v16
 
 npm install pm2 -g
 pm2 startOrReload ecosystem.config.json
-
-
-
-
-
